@@ -31,7 +31,9 @@ def feedDog(dog_hunger_list, biscuit_list, dogs_fed = None):
 
         if dog_sorted[iterator] <= biscuit_sorted[iterator]:
             dogs_fed += 1
-            iterator += 1
+
+        iterator += 1
+
 
     return dogs_fed
 
