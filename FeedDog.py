@@ -25,14 +25,16 @@ def feedDog(dog_hunger_list, biscuit_list, dogs_fed = None):
     dogs_fed = 0
     iterator = 0
 
-    iterator_stop = max(number_of_dogs, number_of_biscuits)
+    iterator_stop = min(number_of_dogs, number_of_biscuits)
 
-    while iterator != iterator_stop - 1:
+    while iterator != iterator_stop:
 
         if dog_sorted[iterator] <= biscuit_sorted[iterator]:
             dogs_fed += 1
             iterator += 1
-        else:
-            iterator = number_of_biscuits
 
     return dogs_fed
+
+
+
+
