@@ -2,7 +2,7 @@
 # Class: CS 325 - Analysis of Algorithms.
 # Description: Given a list of hungry dogs & biscuits, returns the maximum number of dogs that can be fed.
 
-def feedDog(dog_hunger_list, biscuit_list):
+def feedDog(dog_hunger_list, biscuit_list, dogs_fed = None):
     """
     Greedy Algorithm Implementation. Both lists are iterated through which results in a (O)n^2 worst case runtime.
 
@@ -15,35 +15,24 @@ def feedDog(dog_hunger_list, biscuit_list):
 
     number_of_biscuits = len(biscuit_list)  # Grabs number of biscuits
     number_of_dogs = len(dog_hunger_list)  # Grabs number of dogs.
-    potential_fed_dogs = 0  # Starts increment counter
 
-    sorted(dog_hunger_list)
-    sorted(biscuit_list)
+    dog_sorted = sorted(dog_hunger_list)
+    biscuit_sorted = sorted(biscuit_list)
 
-    if number_of_biscuits > number_of_dogs:
-        innerloop = number_of_biscuits - 1
-        outerloop = number_of_dogs - 1
-    else:
-        innerloop = number_of_dogs - 1
-        outerloop = number_of_biscuits - 1
+    if dog_sorted[0] < biscuit_sorted[0]:
+        return 0
 
-    for i in range(1):
+    dogs_fed = 0
+    iterator = 0
 
-        if number_of_biscuits == number_of_dogs:
-            if biscuit_list[number_of_biscuits-1] >= dog_hunger_list[number_of_dogs-1]:
-                potential_fed_dogs +=1
+    iterator_stop = max(number_of_dogs, number_of_biscuits)
 
-        for j in range(innerloop):
+    while iterator != iterator_stop - 1:
 
-            if j > number_of_dogs-1:
-                return potential_fed_dogs
+        if dog_sorted[iterator] <= biscuit_sorted[iterator]:
+            dogs_fed += 1
+            iterator += 1
+        else:
+            iterator = number_of_biscuits
 
-            if i > number_of_biscuits-1:
-                return potential_fed_dogs
-
-
-            if biscuit_list[i] >= dog_hunger_list[j]:
-                potential_fed_dogs += 1
-                i += 1
-
-    return potential_fed_dogs
+    return dogs_fed
