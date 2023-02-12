@@ -32,10 +32,10 @@ def feedDog(dog_hunger_list, biscuit_list):
 
     while dog_iterator != iterator_stop or biscuit_iterator != iterator_stop:
 
-        if biscuit_iterator > iterator_stop:
+        if biscuit_iterator > len(biscuit_sorted) - 1:
             return dogs_fed
 
-        if dog_iterator > iterator_stop:
+        if dog_iterator > len(dog_sorted) - 1:
             return dogs_fed
 
         if dog_sorted[dog_iterator] <= biscuit_sorted[biscuit_iterator]:
