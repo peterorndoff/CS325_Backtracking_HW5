@@ -2,7 +2,7 @@
 # Class: CS 325 - Analysis of Algorithms.
 # Description: Given a list of hungry dogs & biscuits, returns the maximum number of dogs that can be fed.
 
-def feedDog(dog_hunger_list, biscuit_list, dogs_fed=None):
+def feedDog(dog_hunger_list, biscuit_list):
     """
     Greedy Algorithm Implementation. Both lists are iterated through which results in a (O)n^2 worst case runtime.
 
@@ -32,10 +32,10 @@ def feedDog(dog_hunger_list, biscuit_list, dogs_fed=None):
 
     while dog_iterator or biscuit_iterator <= iterator_stop:
 
-        if biscuit_iterator >= iterator_stop:
+        if biscuit_iterator > iterator_stop:
             return dogs_fed
 
-        if dog_iterator >= iterator_stop:
+        if dog_iterator > iterator_stop:
             return dogs_fed
 
         if dog_sorted[dog_iterator] <= biscuit_sorted[biscuit_iterator]:
